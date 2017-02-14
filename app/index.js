@@ -25,5 +25,22 @@ module.exports = class extends Generator {
       this.addDemoSection = props.addDemoSection;
       done();
     }).bind(this)
+  },
+  scaffoldFolders: function() {
+    this.mkdir("app");
+    this.mkdir("app/css");
+    this.mkdir("app/sections");
+    this.mkdir("build");
+  },
+  copyMainFiles: function() {
+    this.copy("_footer.html", "app/footer.html");
+    this.copy("_gruntfile.html", "Gruntfile.js");
+    this.copy("_package.json", "app/package.json");
+
+    var context = {
+      site_name: this.appName;
+    }
+
+    this.template("_header.html", "app/header.html", context);
   }
 };
