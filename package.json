@@ -2,6 +2,10 @@
   "name": "generator-demo",
   "version": "0.0.1",
   "description": "Simple yeoman generator",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JuanMaRuiz/simple-yeoman-generator"
+  },
   "main": "app/index.js",
   "scripts": {
     "test": "mocha"
