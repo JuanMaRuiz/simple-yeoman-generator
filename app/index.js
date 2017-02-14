@@ -1,12 +1,12 @@
 'use strict';
 // Core modules dependencies
-var Generator = require('yeoman-generator'),
+var yeoman = require('yeoman-generator'),
     util = require('util'),
     path = require('path'),
     yosay = require('yosay');
 
-module.exports = class extends Generator {
-  promptUser: function() {
+module.exports = yeoman.generators.Base.extend({
+  promptUserDialog: function() {
     var done = this.async();
 
     this.log(yosay('Welcome to the coolest simpliest yeoman generator!'));
@@ -17,7 +17,7 @@ module.exports = class extends Generator {
       message: 'What is your app\s name?'
     }];
 
-    this.promp(prompts, function(props) {
+    this.prompt(prompts, function(props) {
       this.appName = props.appName;
       done();
     }).bind(this)
@@ -34,7 +34,7 @@ module.exports = class extends Generator {
     // this.copy("_package.json", "app/package.json");
 
     var context = {
-      site_name: this.appName;
+      site_name: this.appName
     }
 
     this.template("_index.html", "app/index.html", context);
@@ -42,4 +42,4 @@ module.exports = class extends Generator {
   end: function() {
     this.bowerInstall();
   }
-};
+});
