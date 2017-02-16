@@ -1,45 +1,65 @@
 'use strict';
 // Core modules dependencies
-var yeoman = require('yeoman-generator'),
+var Generator = require('yeoman-generator'),
     util = require('util'),
     path = require('path'),
     yosay = require('yosay');
 
-module.exports = yeoman.generators.Base.extend({
+module.exports = Generator.extend({
   promptUserDialog: function() {
-    var done = this.async();
-
+    // Have Yeoman greet the user
+    var self = this;
     this.log(yosay('Welcome to the coolest simpliest yeoman generator!'));
 
-    // Have Yeoman greet the user
-    var prompts = [{
-      name: 'appName',
-      message: 'What is your app\s name?'
-    }];
-
-    this.prompt(prompts, function(props) {
-      this.appName = props.appName;
-      done();
-    }).bind(this)
+    return this.prompt({
+        type: 'input',
+        name: 'name',
+        message: 'What is your app\s name?',
+        default: this.appName
+    }).then(function(anwsers) {
+        self.log('app name: ', anwsers.name);
+    });
   },
   scaffoldFolders: function() {
-    this.mkdir("app");
-    this.mkdir("app/css");
-    this.mkdir("app/libs");
-    this.mkdir("build");
+    this.fs.copy(
+        this.templatePath('_app.js'),
+        this.destinationPath('./app/scripts/app.js')
+    )
   },
   copyMainFiles: function() {
-    this.copy("_bower.json", "bower.json");
-    // this.copy("_gruntfile.html", "Gruntfile.js");
-    // this.copy("_package.json", "app/package.json");
+    this.fs.copy(
+        this.templatePath('_bower.json'),
+        this.destinationPath('./bower.json')
+    );
+    this.fs.copy(
+        this.templatePath('_package.json'),
+        this.destinationPath('./package.json')
+    );
+    this.fs.copy(
+        this.templatePath('_.editorconfig'),
+        this.destinationPath('./.editorconfig')
+    );
+    this.fs.copy(
+        this.templatePath('_.travis.yml'),
+        this.destinationPath('./.travis.yml')
+    );
+    this.fs.copy(
+        this.templatePath('_Gruntfile.js'),
+        this.destinationPath('./Gruntfile.js')
+    );
 
     var context = {
       site_name: this.appName
     }
 
-    this.template("_index.html", "app/index.html", context);
+    this.fs.copy(
+        this.templatePath('_index.html'),
+        this.destinationPath('./app/index.html'),
+        context
+    );
   },
   end: function() {
     this.bowerInstall();
+    this.npmInstall();
   }
 });
