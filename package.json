@@ -2,17 +2,14 @@
   "name": "generator-demo-bazinga",
   "version": "0.0.1",
   "description": "Simple yeoman generator",
-  "author": {
-    "name": "JuanMa Ruiz",
-    "email": "ruizjuanma@gmail.com"
-  },
+  "author": "JuanMa Ruiz",
   "repository": {
     "type": "git",
     "url": "https://github.com/JuanMaRuiz/simple-yeoman-generator"
   },
   "main": "app/index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --reporter spec"
   },
   "files": [
     "add"
@@ -23,12 +20,11 @@
     "generator",
     "demo"
   ],
-  "author": "JuanMa Ruiz",
   "license": "MIT",
   "dependencies": {
     "chalk": "^1.1.3",
+    "underscore": "^1.8.3",
     "util": "^0.10.3",
-    "wiredep": "^4.0.0",
     "yeoman-generator": "^1.1.0",
     "yosay": "^2.0.0"
   },

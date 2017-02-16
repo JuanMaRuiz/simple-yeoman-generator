@@ -20,34 +20,43 @@ module.exports = Generator.extend({
         self.log('app name: ', anwsers.name);
     });
   },
-  scaffoldFolders: function() {
+  app: function() {
     this.fs.copy(
         this.templatePath('_app.js'),
         this.destinationPath('./app/scripts/app.js')
     )
   },
-  copyMainFiles: function() {
+  bower: function() {
     this.fs.copy(
-        this.templatePath('_bower.json'),
-        this.destinationPath('./bower.json')
+      this.templatePath('_bower.json'),
+      this.destinationPath('./bower.json')
     );
+  },
+  package: function() {
     this.fs.copy(
         this.templatePath('_package.json'),
         this.destinationPath('./package.json')
     );
+  },
+  editorconfig: function() {
     this.fs.copy(
         this.templatePath('_.editorconfig'),
         this.destinationPath('./.editorconfig')
     );
+  },
+  travis: function(){
     this.fs.copy(
         this.templatePath('_.travis.yml'),
         this.destinationPath('./.travis.yml')
     );
+  },
+  gruntfile: function() {
     this.fs.copy(
         this.templatePath('_Gruntfile.js'),
         this.destinationPath('./Gruntfile.js')
     );
-
+  },
+  index: function() {
     var context = {
       site_name: this.appName
     }

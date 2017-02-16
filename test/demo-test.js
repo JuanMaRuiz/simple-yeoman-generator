@@ -1,9 +1,11 @@
-var mocha = require('mocha'),
-    chai = require('chai'),
-    expect = chai.expect;
+var path = require('path'),
+    assert = require('assert'),
+    helpers = require('yeoman-generator').test,
+    assert = require('yeoman-generator').assert,
+    _ = require('underscore');
 
-describe('Demo test', function() {
-  it('should generate the folder', function() {
-    console.log("There is no test implemented yet!");
+describe('Webapp generator', function () {
+  it('the generator can be required without throwing', function () {
+    this.app = require('../app');
   });
 });
