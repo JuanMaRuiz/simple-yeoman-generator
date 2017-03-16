@@ -17,9 +17,18 @@
           ignorePath:  /\.\.\//
         }
       },
+      copy: {
+        main: {
+          expand: true,
+          cwd: 'app/',
+          src: '{,*/}*.html',
+          dest: 'public/',
+        },
+      },
       bowercopy: {
         options: {
-          srcPrefix: 'bower_components'
+          srcPrefix: 'bower_components',
+
         },
         scripts: {
           options: {
@@ -29,31 +38,32 @@
             'angular.js' : 'angular/angular.js',
             'angular-ui-router.js' : 'angular-ui-router/release/angular-ui-router.js'
           }
-        }
-      },
-      sass: {
-        dist: {
+        },
+        css: {
+          options: {
+            destPrefix: 'public/css'
+          },
           files: {
-            'public/css/style.css': 'scss/style.scss'
+            'bulma.css' : 'bulma/css/bulma.css'
           }
         }
-    },
-    jshint: {
-      options: {
-          reporter: require('jshint-stylish'),
-          jshintrc : '.jshintrc'
       },
-      all: {
-        src: [
-          'Gruntfile.js',
-          'app/js/{,*/}*.js'
-        ]
-      }
-    },
+      jshint: {
+        options: {
+            reporter: require('jshint-stylish'),
+            jshintrc : '.jshintrc'
+        },
+        all: {
+          src: [
+            'Gruntfile.js',
+            'app/js/{,*/}*.js'
+          ]
+        }
+      },
       watch: {
         project: {
-          files: ['public/**/*.js', 'public/**/*.html', 'public/**/*.json','public/**/*.css', './scss/*.scss'],
-          tasks: ["sass"],
+          files: ['public/**/*.js', 'public/**/*.html', '{,*/}*.json','public/**/*.css'],
+          tasks: [],
           options: {
             livereload: true
           },
@@ -73,7 +83,7 @@
       }
     });
 
-    grunt.registerTask('default', ['wiredep', 'bowercopy' ,'connect', 'sass', 'jshint','watch']);
+    grunt.registerTask('default', ['bowercopy', 'copy', 'connect', 'jshint','watch']);
 
   };
 })();

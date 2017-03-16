@@ -38,6 +38,12 @@ module.exports = Generator.extend({
         this.destinationPath('./package.json')
     );
   },
+  jshintrc: function() {
+    this.fs.copy(
+        this.templatePath('_.jshintrc'),
+        this.destinationPath('./.jshintrc')
+    );
+  },
   editorconfig: function() {
     this.fs.copy(
         this.templatePath('_.editorconfig'),
@@ -64,7 +70,7 @@ module.exports = Generator.extend({
     this.fs.copy(
         this.templatePath('_index.html'),
         this.destinationPath('./app/index.html'),
-        context
+        this.context
     );
   },
   end: function() {
