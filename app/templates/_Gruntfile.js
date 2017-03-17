@@ -19,11 +19,21 @@
       },
       copy: {
         main: {
-          expand: true,
-          cwd: 'app/',
-          src: '{,*/}*.html',
-          dest: 'public/',
-        },
+          files: [
+            {
+              expand: true,
+              cwd: 'app/',
+              src: '{,*/}*.html',
+              dest: 'public/'
+            },
+            {
+              expand: true,
+              cwd: 'app/scripts/',
+              src: '{,*/}*.js',
+              dest: 'public/js'
+            }
+          ]
+        }
       },
       bowercopy: {
         options: {
@@ -62,8 +72,8 @@
       },
       watch: {
         project: {
-          files: ['public/**/*.js', 'public/**/*.html', '{,*/}*.json','public/**/*.css'],
-          tasks: [],
+          files: ['app/{,*/}*.js', 'app/{,*/}*.html', '{,*/}*.json','app/{,*/}*.css'],
+          tasks: ['copy'],
           options: {
             livereload: true
           },
