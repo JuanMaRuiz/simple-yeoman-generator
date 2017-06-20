@@ -1,8 +1,7 @@
-var path = require('path'),
-    assert = require('assert'),
-    helpers = require('yeoman-generator').test,
-    assert = require('yeoman-generator').assert,
-    _ = require('underscore');
+const path = require('path');
+const assert = require('yeoman-assert');
+const helpers = require('yeoman-generator').test;
+const _ = require('underscore');
 
 describe('Webapp generator', function() {
   it('the generator can be required without throwing', function() {

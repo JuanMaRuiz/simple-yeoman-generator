@@ -1,11 +1,34 @@
 'use strict';
 // Core modules dependencies
-let Generator = require('yeoman-generator');
-let util = require('util');
-let path = require('path');
-let yosay = require('yosay');
+const Generator = require('yeoman-generator');
+const yosay = require('yosay');
 
-module.exports = Generator.extend({
+module.exports = class SimpleGenerator extends Generator {
+  constructor(args, opts) {
+    super(args, opts);
+  }
+
+  prompting() {
+    this.log(yosay(
+      'Welcome to the simpliest yeoman generator'
+    ));
+
+    const prompts = {
+        type: 'input',
+        name: 'name',
+        message: 'What is your app\s name?',
+        default: this.appName,
+    }
+
+
+    return this.prompt(prompts).then((anwsers) => {
+      this.log('app name', anwsers.name);
+    });
+
+  };
+};
+
+/*module.exports = Generator.extend({
   promptUserDialog: function() {
     // Have Yeoman greet the user
     let self = this;
@@ -77,4 +100,4 @@ module.exports = Generator.extend({
     this.bowerInstall();
     this.npmInstall();
   },
-});
+});*/
