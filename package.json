@@ -1,6 +1,6 @@
 {
   "name": "generator-demo-bazinga",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Simple yeoman generator",
   "author": "JuanMa Ruiz",
   "repository": {
@@ -9,7 +9,8 @@
   },
   "main": "app/index.js",
   "scripts": {
-    "test": "mocha --reporter spec"
+    "pretest": "./node_modules/.bin/eslint . --fix",
+    "test": ""
   },
   "files": [
     "add"
@@ -29,7 +30,9 @@
     "yosay": "^2.0.0"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^3.2.0"
+    "eslint": "^4.0.0",
+    "eslint-config-google": "^0.8.0",
+    "yeoman-assert": "^3.0.0",
+    "yeoman-test": "^1.6.0"
   }
 }

@@ -1,21 +1,21 @@
 'use strict';
 // Core modules dependencies
-var Generator = require('yeoman-generator'),
-    util = require('util'),
-    path = require('path'),
-    yosay = require('yosay');
+let Generator = require('yeoman-generator');
+let util = require('util');
+let path = require('path');
+let yosay = require('yosay');
 
 module.exports = Generator.extend({
   promptUserDialog: function() {
     // Have Yeoman greet the user
-    var self = this;
+    let self = this;
     this.log(yosay('Welcome to the coolest simpliest yeoman generator!'));
 
     return this.prompt({
         type: 'input',
         name: 'name',
         message: 'What is your app\s name?',
-        default: this.appName
+        default: this.appName,
     }).then(function(anwsers) {
         self.log('app name: ', anwsers.name);
     });
@@ -24,7 +24,7 @@ module.exports = Generator.extend({
     this.fs.copy(
         this.templatePath('_app.js'),
         this.destinationPath('./app/scripts/app.js')
-    )
+    );
   },
   bower: function() {
     this.fs.copy(
@@ -50,7 +50,7 @@ module.exports = Generator.extend({
         this.destinationPath('./.editorconfig')
     );
   },
-  travis: function(){
+  travis: function() {
     this.fs.copy(
         this.templatePath('_.travis.yml'),
         this.destinationPath('./.travis.yml')
@@ -63,18 +63,18 @@ module.exports = Generator.extend({
     );
   },
   index: function() {
-    var context = {
-      site_name: this.appName
-    }
+    let context = {
+      site_name: this.appName,
+    };
 
     this.fs.copy(
         this.templatePath('_index.html'),
-        this.destinationPath('./app/index.html'),
+        this.destinationPath('./app/index.js'),
         this.context
     );
   },
   end: function() {
     this.bowerInstall();
     this.npmInstall();
-  }
+  },
 });

@@ -1,9 +1,8 @@
-(function(){
+(function() {
   'use strict';
 
 
-  module.exports = function (grunt) {
-
+  module.exports = function(grunt) {
   require('jit-grunt')(grunt);
 
     grunt.initConfig({
@@ -12,10 +11,10 @@
           // Point to the files that should be updated when
           // you run `grunt wiredep`
           src: [
-            'app/index.html'
+            'app/index.js',
           ],
-          ignorePath:  /\.\.\//
-        }
+          ignorePath: /\.\.\//,
+        },
       },
       copy: {
         main: {
@@ -24,16 +23,16 @@
               expand: true,
               cwd: 'app/',
               src: '{,*/}*.html',
-              dest: 'public/'
+              dest: 'public/',
             },
             {
               expand: true,
               cwd: 'app/scripts/',
               src: '{,*/}*.js',
-              dest: 'public/js'
-            }
-          ]
-        }
+              dest: 'public/js',
+            },
+          ],
+        },
       },
       bowercopy: {
         options: {
@@ -42,40 +41,40 @@
         },
         scripts: {
           options: {
-            destPrefix: 'public/js/lib'
+            destPrefix: 'public/js/lib',
           },
           files: {
-            'angular.js' : 'angular/angular.js',
-            'angular-ui-router.js' : 'angular-ui-router/release/angular-ui-router.js'
-          }
+            'angular.js': 'angular/angular.js',
+            'angular-ui-router.js': 'angular-ui-router/release/angular-ui-router.js',
+          },
         },
         css: {
           options: {
-            destPrefix: 'public/css'
+            destPrefix: 'public/css',
           },
           files: {
-            'bulma.css' : 'bulma/css/bulma.css'
-          }
-        }
+            'bulma.css': 'bulma/css/bulma.css',
+          },
+        },
       },
       jshint: {
         options: {
             reporter: require('jshint-stylish'),
-            jshintrc : '.jshintrc'
+            jshintrc: '.jshintrc',
         },
         all: {
           src: [
             'Gruntfile.js',
-            'app/js/{,*/}*.js'
-          ]
-        }
+            'app/js/{,*/}*.js',
+          ],
+        },
       },
       watch: {
         project: {
-          files: ['app/{,*/}*.js', 'app/{,*/}*.html', '{,*/}*.json','app/{,*/}*.css'],
+          files: ['app/{,*/}*.js', 'app/{,*/}*.html', '{,*/}*.json', 'app/{,*/}*.css'],
           tasks: ['copy'],
           options: {
-            livereload: true
+            livereload: true,
           },
 
         },
@@ -87,13 +86,12 @@
             base: 'public/',
             open: true,
             hostname: 'localhost',
-            livereload: 35729
-          }
-        }
-      }
+            livereload: 35729,
+          },
+        },
+      },
     });
 
-    grunt.registerTask('default', ['bowercopy', 'copy', 'connect', 'jshint','watch']);
-
+    grunt.registerTask('default', ['bowercopy', 'copy', 'connect', 'jshint', 'watch']);
   };
 })();
