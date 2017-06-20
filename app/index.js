@@ -4,8 +4,10 @@ const Generator = require('yeoman-generator');
 const yosay = require('yosay');
 
 module.exports = class SimpleGenerator extends Generator {
+
   constructor(args, opts) {
     super(args, opts);
+
   }
 
   prompting() {
@@ -18,6 +20,7 @@ module.exports = class SimpleGenerator extends Generator {
         name: 'name',
         message: 'What is your app\s name?',
         default: this.appName,
+        store   : true
     }
 
 
@@ -26,6 +29,19 @@ module.exports = class SimpleGenerator extends Generator {
     });
 
   };
+
+  writing() {
+    this.fs.copyTpl(
+      this.templatePath('_index.html'),
+      this.destinationPath('app/index.html'),
+      { title: 'Bazinga' }
+    );
+  }
+
+  // installDependencies() {
+  //   this.npmInstall();
+  //   this.bowerInstall();
+  // }
 };
 
 /*module.exports = Generator.extend({
