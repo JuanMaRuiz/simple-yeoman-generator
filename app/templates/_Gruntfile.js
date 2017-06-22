@@ -71,7 +71,13 @@
       },
       watch: {
         project: {
-          files: ['app/{,*/}*.js', 'app/{,*/}*.html', '{,*/}*.json', 'app/{,*/}*.css'],
+          files: [
+            'app/{,*/}*.js',
+            'app/{,*/}*.html',
+            '{,*/}*.json',
+            'app/{,*/}*.css',
+
+          ],
           tasks: ['copy'],
           options: {
             livereload: true,
@@ -92,6 +98,13 @@
       },
     });
 
-    grunt.registerTask('default', ['bowercopy', 'copy', 'connect', 'jshint', 'watch']);
+    grunt.registerTask('default',
+      [
+        'bowercopy',
+        'copy',
+        'connect',
+        'jshint',
+        'watch',
+      ]);
   };
 })();
