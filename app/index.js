@@ -1,12 +1,8 @@
-'use strict';
 // Core modules dependencies
 const Generator = require('yeoman-generator');
 const yosay = require('yosay');
 const chalk = require('chalk');
-const filePaths = require('./app-modules/file-paths');
-
-
-console.log('filePaths: ', filePaths);
+const filePaths = require('./generator-modules/file-paths');
 
 module.exports = class SimpleGenerator extends Generator {
   constructor(args, opts) {
@@ -15,13 +11,13 @@ module.exports = class SimpleGenerator extends Generator {
 
   prompting() {
     this.log(yosay(
-      'Welcome to the ' + chalk.green('simpliest') + ' yeoman generator'));
+      `Welcome to the ${chalk.green('simpliest')} yeoman generator ever!!!`));
 
     const prompts = [
       {
         type: 'input',
         name: 'name',
-        message: 'What is your app\s name?',
+        message: 'What is your app name?',
         default: this.appName,
         store: true,
       },
@@ -34,7 +30,7 @@ module.exports = class SimpleGenerator extends Generator {
     ];
 
 
-    return this.prompt(prompts).then(({name, type}) => {
+    return this.prompt(prompts).then(({ name, type }) => {
       this.log('app name', name);
       this.log('app type', type);
       this.config = {
@@ -45,11 +41,9 @@ module.exports = class SimpleGenerator extends Generator {
   };
 
   writing() {
-    console.log('filePaths.call(this).mainFolder: ', filePaths.call(this).mainFolder);
     this.fs.copyTpl(
       this.templatePath('_index.html'),
-      this.destinationPath(filePaths.call(this).mainFolder + 'index.html'),
-      {
+      this.destinationPath(filePaths.mainFolder + 'index.html'), {
         title: this.config.appName,
         type: this.config.type,
       }

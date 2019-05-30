@@ -1,12 +1,6 @@
-'use strict';
+const mainFolder = 'app/';
 
-function resolvePath() {
-  const filesPaths = {
-    mainFolder: 'app/',
-    destJsFiles: this.mainFolder + 'scripts',
-  };
-
-  return filesPaths;
+module.exports = {
+  mainFolder,
+  destJsFiles: `${mainFolder}scripts`,
 };
-
-module.exports = resolvePath;
