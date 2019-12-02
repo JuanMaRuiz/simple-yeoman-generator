@@ -4,7 +4,18 @@
 # Simple Yeoman generator - Bazinga
 Hi my name is *Bazinga* and I'm a very simple [Yeoman](yeoman.io) generator.
 
-I have been created from scratch. The idea behind me is also simple, how can I be created?.
+I have been created from scratch. The idea behind me is also simple, help my human to scaffold a basic node project. Here is what I'll generate:
+
+```bash
+.
+├── .editorconfig
+├── .eslintrc.js
+├── .travis.yml
+├── app.js
+├── package.json
+└── test
+    └── index.test.js
+```
 
 So there are a lot of work to do but this is the begining ...
 
