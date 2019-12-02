@@ -1,9 +1,8 @@
 (function() {
   'use strict';
 
-
   module.exports = function(grunt) {
-  require('jit-grunt')(grunt);
+    require('jit-grunt')(grunt);
 
     grunt.initConfig({
       wiredep: {
@@ -32,29 +31,6 @@
               dest: 'public/js',
             },
           ],
-        },
-      },
-      bowercopy: {
-        options: {
-          srcPrefix: 'bower_components',
-
-        },
-        scripts: {
-          options: {
-            destPrefix: 'public/js/lib',
-          },
-          files: {
-            'angular.js': 'angular/angular.js',
-            'angular-ui-router.js': 'angular-ui-router/release/angular-ui-router.js',
-          },
-        },
-        css: {
-          options: {
-            destPrefix: 'public/css',
-          },
-          files: {
-            'bulma.css': 'bulma/css/bulma.css',
-          },
         },
       },
       jshint: {
@@ -100,7 +76,6 @@
 
     grunt.registerTask('default',
       [
-        'bowercopy',
         'copy',
         'connect',
         'jshint',

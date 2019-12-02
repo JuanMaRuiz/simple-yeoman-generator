@@ -2,7 +2,7 @@
 const Generator = require('yeoman-generator');
 const yosay = require('yosay');
 const chalk = require('chalk');
-const filePaths = require('./generator-modules/file-paths');
+const { mainFolder } = require('./generator-modules/file-paths');
 
 module.exports = class SimpleGenerator extends Generator {
   constructor(args, opts) {
@@ -38,22 +38,21 @@ module.exports = class SimpleGenerator extends Generator {
         type: type,
       };
     });
-  };
+  }
 
   writing() {
     this.fs.copyTpl(
       this.templatePath('_index.html'),
-      this.destinationPath(filePaths.mainFolder + 'index.html'), {
+      this.destinationPath(mainFolder + 'index.html'), {
         title: this.config.appName,
         type: this.config.type,
       }
     );
   }
 
-  // installDependencies() {
-  //   this.npmInstall();
-  //   this.bowerInstall();
-  // }
+  installDependencies() {
+    this.npmInstall();
+  }
 };
 
 /* module.exports = Generator.extend({
