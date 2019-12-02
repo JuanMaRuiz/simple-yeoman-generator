@@ -1,6 +1,6 @@
-const mainFolder = 'app/';
+const mainFolder = './';
 
 module.exports = {
   mainFolder,
-  destJsFiles: `${mainFolder}scripts`,
+  appFolder: `${mainFolder}/app`,
 };

@@ -1,7 +1,7 @@
 // Core modules dependencies
 const Generator = require('yeoman-generator');
 const yosay = require('yosay');
-const {chalk} = require('chalk');
+const chalk = require('chalk');
 const { mainFolder } = require('./generator-modules/file-paths');
 
 module.exports = class SimpleGenerator extends Generator {
@@ -31,8 +31,6 @@ module.exports = class SimpleGenerator extends Generator {
 
 
     return this.prompt(prompts).then(({ name, type }) => {
-      this.log('app name', name);
-      this.log('app type', type);
       this.config = {
         appName: name,
         type: type,
@@ -42,10 +40,9 @@ module.exports = class SimpleGenerator extends Generator {
 
   writing() {
     this.fs.copyTpl(
-      this.templatePath('_index.html'),
-      this.destinationPath(mainFolder + 'index.html'), {
+      this.templatePath('_package.json'),
+      this.destinationPath(mainFolder + '/foopackage.json'), {
         title: this.config.appName,
-        type: this.config.type,
       }
     );
   }
