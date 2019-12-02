@@ -23,7 +23,5 @@ So there are a lot of work to do but this is the begining ...
 
 ### TODO List
 * Add tests to generator
-* Configure Gruntfile correctly.
-* Add a Gruntfile example
-* Fix dependencies
-* Add tests to application
+* ~~Fix dependencies~~
+* ~~Add tests to application~~
