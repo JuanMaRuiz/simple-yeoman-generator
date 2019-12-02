@@ -11,8 +11,8 @@ So there are a lot of work to do but this is the begining ...
 > If you take a look to my soul and you have any time to recommend me some improvements ... feel free to do it!
 
 ### TODO List
-* [] Add tests to generator
-* [] Configure Gruntfile correctly.
-* [] Add a Gruntfile example
-* [] Fix dependencies
-* [] Add tests to application
+* Add tests to generator
+* Configure Gruntfile correctly.
+* Add a Gruntfile example
+* Fix dependencies
+* Add tests to application

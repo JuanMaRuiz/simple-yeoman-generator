@@ -1,4 +1,5 @@
-(function() {
-    'use strict';
-    console.log('Cool this is working!!');
-})();
+const foo = () => 'Bazinga is the new Black';
+
+module.exports = {
+  foo
+}

@@ -1,7 +1,7 @@
 // Core modules dependencies
 const Generator = require('yeoman-generator');
 const yosay = require('yosay');
-const chalk = require('chalk');
+const {chalk} = require('chalk');
 const { mainFolder } = require('./generator-modules/file-paths');
 
 module.exports = class SimpleGenerator extends Generator {
