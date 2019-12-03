@@ -40,7 +40,7 @@ module.exports = class SimpleGenerator extends Generator {
   writing() {
     this.fs.copyTpl(
       this.templatePath('package.json'),
-      this.destinationPath(mainFolder + '/package.json'), {
+      this.destinationPath(`${mainFolder}/package.json`), {
         title: this.config.appName,
       }
     );
@@ -53,8 +53,8 @@ module.exports = class SimpleGenerator extends Generator {
     });
 
     this.fs.copyTpl(
-      this.templatePath(`${testFolder}/${testFile}`),
-      this.destinationPath(`${testFolder}/${testFile}`)
+      this.templatePath(testFile),
+      this.destinationPath(testFile)
     );
   }
 

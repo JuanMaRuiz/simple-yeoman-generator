@@ -1,7 +1,7 @@
 const mainFolder = './';
 const testFolder = `${mainFolder}/test`;
 const basicFiles = ['.editorconfig', '.eslintrc.js', '.travis.yml'];
-const testFile = 'index.test.js';
+const testFile = `${testFolder}/index.test.js`;
 
 module.exports = {
   mainFolder,
