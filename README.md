@@ -11,8 +11,8 @@ I have been created from scratch. The idea behind me is also simple, help my hum
 ├── .editorconfig
 ├── .eslintrc.js
 ├── .travis.yml
-├── app.js
 ├── package.json
+├── package-lock.json
 └── test
     └── index.test.js
 ```
@@ -22,6 +22,7 @@ So there are a lot of work to do but this is the begining ...
 > If you take a look to my soul and you have any time to recommend me some improvements ... feel free to do it!
 
 ### TODO List
-* Add tests to generator
+* Create subgenerators: node, webapp (index.html, styles.css, ..)
+* ~~Add tests to generator~~
 * ~~Fix dependencies~~
 * ~~Add tests to application~~

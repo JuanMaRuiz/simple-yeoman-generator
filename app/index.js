@@ -54,7 +54,7 @@ module.exports = class SimpleGenerator extends Generator {
 
     this.fs.copyTpl(
       this.templatePath(`${testFolder}/${testFile}`),
-      this.destinationPath(`${testFolder}/${testFile}}`)
+      this.destinationPath(`${testFolder}/${testFile}`)
     );
   }
 
