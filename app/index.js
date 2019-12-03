@@ -2,7 +2,12 @@
 const Generator = require('yeoman-generator');
 const yosay = require('yosay');
 const chalk = require('chalk');
-const { mainFolder, basicFiles } = require('./generator-modules/file-paths');
+const {
+  mainFolder,
+  testFolder,
+  basicFiles,
+  testFile,
+} = require('./generator-modules/file-paths');
 
 module.exports = class SimpleGenerator extends Generator {
   constructor(args, opts) {
@@ -46,6 +51,11 @@ module.exports = class SimpleGenerator extends Generator {
         this.destinationPath(mainFolder + file)
       );
     });
+
+    this.fs.copyTpl(
+      this.templatePath(`${testFolder}/${testFile}`),
+      this.destinationPath(`${testFolder}/${testFile}}`)
+    );
   }
 
   installDependencies() {
